@@ -47,7 +47,7 @@
   <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
   <script>
     $.ajax({
-      url: "http://localhost:9000/bank/clients",
+      url: "https://spark-production-e1c3.up.railway.app/bank/clients",
       success: function (response) {
         let usersList = Array.from(response.data);
 
