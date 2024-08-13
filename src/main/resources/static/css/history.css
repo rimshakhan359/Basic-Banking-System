@@ -1,0 +1,44 @@
+body {
+  background-color: #161a30;
+}
+
+#LogoPg1 img {
+  width: 200px;
+  margin: 10px;
+}
+#main {
+  background-color: #f4dfc8;
+  margin: 60px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#butns a {
+  color: #f4dfc8;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 10px;
+  border: 1px solid #161a30;
+  margin: 50px;
+  box-shadow: 1px 1px 1px 1px #f4dfc8;
+  font-family: "Playfair Display SC", serif;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+#butns {
+  display: flex;
+  justify-content: center;
+}
+
+#main h1 {
+  color: #161a30;
+  font-size: 70px;
+  display: flex;
+  justify-content: center;
+}
+
+#nav a:hover {
+  background-color: #5d648d;
+  cursor: pointer;
+}

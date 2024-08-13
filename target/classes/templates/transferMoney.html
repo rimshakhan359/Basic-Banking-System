@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/tsf.css" />
+    <title>Transfer Money</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="nav">
+      <div id="LogoPg1">
+        <img src="/images/logo.png" alt="" />
+      </div>
+      <div id="butns">
+        <a href="/bank/home">Home</a>
+        <a href="/bank/all-clients">Users</a>
+        <a href="/bank/transaction-history">Transfer History</a>
+      </div>
+    </div>
+
+    <div
+      id="main"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <h1>Transfer Money</h1>
+
+      <div>
+        <select id="user-selector" style="padding: 20px"></select>
+        <input type="number" name="" id="amount" style="padding: 20px" />
+        <button
+          id="transfer-btn"
+          style="padding: 15px"
+          onclick="transferFund()"
+        >
+          Transfer
+        </button>
+      </div>
+    </div>
+  </body>
+
+  <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+  <script>
+    $.ajax({
+      url: "https://spark-production-e1c3.up.railway.app/bank/clients",
+      success: function (response) {
+        let usersList = Array.from(response.data);
+
+        let html = "<option value=''>Select Recipient</option>";
+        usersList.forEach((user) => {
+          html +=
+            "<option value=" +
+            user.id +
+            " >" +
+            user.name +
+            " (" +
+            user.email +
+            ") </option>";
+        });
+
+        document.getElementById("user-selector").innerHTML = html;
+      },
+    });
+
+    function transferFund() {
+      let amountToTransfer = $("#amount").val();
+      let recipientID = $("#user-selector").find(":selected").val();
+
+      if (recipientID == "") {
+        alert("Please select a recipient");
+        return;
+      }
+
+      if (amountToTransfer == "") {
+        alert("Please enter valid amound");
+        return;
+      }
+
+      let payload = {
+        amount: amountToTransfer,
+        recipientID: recipientID,
+      };
+
+      $.ajax({
+        type: "PUT",
+        url: "https://spark-production-e1c3.up.railway.app/bank/transfer-amount",
+        data: JSON.stringify(payload),
+        contentType: "application/json",
+        cache: false,
+        success: function (response) {
+          alert(response.message);
+
+          //reset amount and user selector
+          $("#amount").val("");
+          $("#user-selector").prop("selectedIndex", 0);
+        },
+        error: function (error) {
+          console.log(error.responseJSON.message);
+          alert(error.responseJSON.message);
+        },
+      });
+    }
+  </script>
+</html>
