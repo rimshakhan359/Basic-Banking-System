@@ -28,7 +28,7 @@ public class frontend {
         return "transferMoney";
     }
 
-    @GetMapping("/home")
+    @GetMapping("/dashboard")
     public String home(){
         return "home";
     }
