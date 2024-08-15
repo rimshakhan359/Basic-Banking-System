@@ -37,13 +37,14 @@ public class TransactionsService {
     }
 
     private void updateTransactionHistory(int recipientID, Double amount){
-        String query = "INSERT INTO transactions_history (id,user_id,transaction_amount) VALUES (?,?,?)";
+        String query = "INSERT INTO transactions_history (id,user_id,transaction_amount,total_balance) VALUES (?,?,?,SELECT balance FROM users WHERE id = ?)";
 
         jdbc.execute(query, (PreparedStatementCallback<Void>) ps->{
 
             ps.setString(1, UUID.randomUUID().toString());
             ps.setInt(2,recipientID);
             ps.setDouble(3,amount);
+            ps.setInt(4,recipientID);
 
             if(ps.executeUpdate() < 1 )
                 throw new RuntimeException("Could not update transaction history");
