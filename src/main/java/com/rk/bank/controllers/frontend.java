@@ -39,6 +39,7 @@ public class frontend {
 
     @GetMapping("/dashboard")
     public String home(Model model){
+        System.out.println("PORT: " + env.getServerPort());
         model.addAttribute("baseUrl", env.getBaseUrl() + env.getServerPort() + env.getApiPrefix());
         return "home";
     }
