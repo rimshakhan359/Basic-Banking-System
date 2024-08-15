@@ -10,13 +10,10 @@ body {
 }
 
 #main {
-  background-color: #f4dfc8;
-  /* margin: 60px; */
-  padding: 40px;
-  border-radius: 10px;
-  max-height: 65%;
-  overflow-y: scroll;
-  margin: 40px;
+    background-color: #f4dfc8;
+    margin: 60px;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 #butns a {
