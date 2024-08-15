@@ -35,35 +35,34 @@
       <div id="customer">
         <h1>CUSTOMERS</h1>
       </div>
-      <div>
-        <table id="customers" class="display" style="width:100%">
-          <thead>
-          <tr>
-            <th>ID</th>
-            <th>Client Name</th>
-            <th>Client Email</th>
-            <th>Phone</th>
-            <th>Total Balance</th>
-          </tr>
-          </thead>
-          <tfoot>
-          <tr>
-            <th>ID</th>
-            <th>Client Name</th>
-            <th>Client Email</th>
-            <th>Phone</th>
-            <th>Total Balance</th>
-          </tr>
-          </tfoot>
-        </table>
-      </div>
+
+      <table id="customers" class="display" style="width:100%">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Client Name</th>
+          <th>Client Email</th>
+          <th>Phone</th>
+          <th>Total Balance</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+          <th>ID</th>
+          <th>Client Name</th>
+          <th>Client Email</th>
+          <th>Phone</th>
+          <th>Total Balance</th>
+        </tr>
+        </tfoot>
+      </table>
     </div>
   </body>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://cdn.datatables.net/2.1.3/js/dataTables.min.js"></script>
   <script>
-    let transactionTable = new DataTable('#customers', {
+    let customersTable = new DataTable('#customers', {
       ajax: 'https://spark-production-e1c3.up.railway.app/bank/clients',
       columns: [
         {data: 'id'},
