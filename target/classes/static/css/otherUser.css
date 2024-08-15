@@ -37,10 +37,6 @@ body {
   justify-content: center;
 }
 
-td {
-  padding: 20px;
-}
-
 #main h1 {
   color: #161a30;
   font-size: 70px;
@@ -48,17 +44,8 @@ td {
   justify-content: center;
 }
 
-#main table {
-  color: #161a30;
-  font-size: 30px;
-}
-
 #nav a:hover {
   background-color: #5d648d;
   cursor: pointer;
 }
 
-#table {
-  display: flex;
-  justify-content: center;
-}
