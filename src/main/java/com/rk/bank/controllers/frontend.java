@@ -15,32 +15,31 @@ public class frontend {
 
     @GetMapping("/transactions")
     public String index(Model model){
-        model.addAttribute("baseUrl", env.getBaseUrl() + env.getServerPort() + env.getApiPrefix());
+        model.addAttribute("baseUrl", env.getBaseUrl() + env.getApiPrefix());
         return "transactions";
     }
 
     @GetMapping("/all-clients")
     public String bankClients(Model model){
-        model.addAttribute("baseUrl", env.getBaseUrl() + env.getServerPort() + env.getApiPrefix());
+        model.addAttribute("baseUrl", env.getBaseUrl() + env.getApiPrefix());
         return "otherUser";
     }
 
     @GetMapping("/transaction-history")
     public String transactionHistory(Model model){
-        model.addAttribute("baseUrl", env.getBaseUrl() + env.getServerPort() + env.getApiPrefix());
+        model.addAttribute("baseUrl", env.getBaseUrl() + env.getApiPrefix());
         return "transferHistory";
     }
 
     @GetMapping("/transfer-funds")
     public String transferFunds(Model model){
-        model.addAttribute("baseUrl", env.getBaseUrl() + env.getServerPort() + env.getApiPrefix());
+        model.addAttribute("baseUrl", env.getBaseUrl() + env.getApiPrefix());
         return "transferMoney";
     }
 
     @GetMapping("/dashboard")
     public String home(Model model){
-        System.out.println("PORT: " + env.getServerPort());
-        model.addAttribute("baseUrl", env.getBaseUrl() + env.getServerPort() + env.getApiPrefix());
+        model.addAttribute("baseUrl", env.getBaseUrl() + env.getApiPrefix());
         return "home";
     }
 }

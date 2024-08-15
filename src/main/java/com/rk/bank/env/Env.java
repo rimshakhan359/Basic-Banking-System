@@ -13,18 +13,11 @@ public class Env {
     @Value("${base.url}")
     private String baseUrl;
 
-    @Value("${server.port}")
-    private String serverPort;
-
     @Value("${api.prefix}")
     private String apiPrefix;
 
     public String getBaseUrl(){
         return this.baseUrl;
-    }
-
-    public String getServerPort(){
-        return this.serverPort;
     }
 
     public String getApiPrefix(){
