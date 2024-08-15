@@ -35,6 +35,7 @@ public class ClientService {
                 client.put("id", rs.getString("id"));
                 client.put("name", rs.getString("name"));
                 client.put("email", rs.getString("email"));
+                client.put("phone", rs.getString("phone"));
                 client.put("balance", rs.getString("balance"));
 
                 clientsList.add(client);
