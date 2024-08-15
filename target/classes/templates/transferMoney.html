@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"><head>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,6 +13,8 @@
     />
   </head>
   <body>
+  <span id="base-url" hidden="hidden" th:text="${baseUrl}"></span>
+
     <div id="nav">
       <div id="LogoPg1">
         <img src="/images/logo.png" alt="" />
@@ -51,8 +53,11 @@
 
   <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
   <script>
+    let baseUrl = $("#base-url").text();
+    alert(baseUrl);
+
     $.ajax({
-      url: "https://spark-production-e1c3.up.railway.app/bank/clients",
+      url: baseUrl + "/clients",
       success: function (response) {
         let usersList = Array.from(response.data);
 
@@ -93,7 +98,7 @@
 
       $.ajax({
         type: "PUT",
-        url: "https://spark-production-e1c3.up.railway.app/bank/transfer-amount",
+        url: baseUrl + "/transfer-amount",
         data: JSON.stringify(payload),
         contentType: "application/json",
         cache: false,

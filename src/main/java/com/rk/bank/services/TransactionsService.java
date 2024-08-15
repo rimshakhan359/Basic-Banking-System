@@ -37,7 +37,7 @@ public class TransactionsService {
     }
 
     private void updateTransactionHistory(int recipientID, Double amount){
-        String query = "INSERT INTO transactions_history (id,user_id,transaction_amount,total_balance) VALUES (?,?,?,SELECT balance FROM users WHERE id = ?)";
+        String query = "INSERT INTO transactions_history (id,user_id,transaction_amount,total_balance) SELECT ?,?,?,(SELECT balance FROM users WHERE id = ?)";
 
         jdbc.execute(query, (PreparedStatementCallback<Void>) ps->{
 

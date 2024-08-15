@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"><head>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,7 +19,9 @@
     </style>
   </head>
   <body>
-    <div id="nav">
+  <span id="base-url" hidden th:text="${baseUrl}"></span>
+
+  <div id="nav">
       <div id="LogoPg1">
         <img src="/images/logo.png" alt="" />
       </div>
@@ -61,8 +63,11 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://cdn.datatables.net/2.1.3/js/dataTables.min.js"></script>
   <script>
+    let baseUrl = $("#base-url").text();
+    console.log("Base URL: ", baseUrl)
+
     let transactionTable = new DataTable('#transaction-history', {
-      ajax: 'https://spark-production-e1c3.up.railway.app/bank/transactions-list',
+      ajax: baseUrl + '/transactions-list',
       columns: [
         {data: 'recordCount'},
         {data: 'clientName'},
