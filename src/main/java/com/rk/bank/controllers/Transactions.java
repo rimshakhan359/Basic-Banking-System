@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @RestController
@@ -42,7 +43,7 @@ public class Transactions {
        BigDecimal bigDecimal = new BigDecimal(request.get("amount"));
 
        try{
-           transactionsService.transferFunds(recipientID, bigDecimal.doubleValue());
+           transactionsService.transferFundsTrx(recipientID, bigDecimal.doubleValue());
        }catch (Exception e){
            e.printStackTrace();
 
@@ -51,6 +52,25 @@ public class Transactions {
        }
 
         return ResponseEntity.status(httpStatusCode).body(new RestResponse(message));
+    }
+
+    @GetMapping("/transactions-list")
+    public ResponseEntity<Object> getTransactionsHistory(){
+
+        String message = "Transactions Data Returned successfully";
+        HttpStatusCode httpStatusCode = HttpStatus.OK;
+
+        ArrayList<HashMap<String,String>> transactionsList = null;
+        try{
+            transactionsList = transactionsService.getTransactionsHistory();
+        }catch (Exception e){
+            e.printStackTrace();
+
+            message = e.getMessage();
+            httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+
+        return ResponseEntity.status(httpStatusCode).body(new RestResponse(message,transactionsList));
     }
 
 }
