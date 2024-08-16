@@ -1,9 +1,0 @@
-com\rk\bank\BankApplication.class
-com\rk\bank\controllers\frontend.class
-com\rk\bank\response\RestResponse.class
-com\rk\bank\services\ClientService.class
-com\rk\bank\services\TransactionsService.class
-com\rk\bank\controllers\Clients.class
-com\rk\bank\controllers\Transactions.class
-com\rk\bank\env\Env.class
-com\rk\bank\security\SecurityConfig.class
