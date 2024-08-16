@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -40,10 +41,11 @@ public class Transactions {
         }
 
        int recipientID = Integer.parseInt(request.get("recipientID"));
-       BigDecimal bigDecimal = new BigDecimal(request.get("amount"));
+       BigDecimal amount = new BigDecimal(request.get("amount"));
+       amount = amount.setScale(2, RoundingMode.HALF_EVEN);
 
        try{
-           transactionsService.transferFundsTrx(recipientID, bigDecimal.doubleValue());
+           transactionsService.transferFundsTrx(recipientID, amount.doubleValue());
        }catch (Exception e){
            e.printStackTrace();
 
