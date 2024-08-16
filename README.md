@@ -29,7 +29,7 @@ A simple banking application built with Spring Boot. This project demonstrates b
 
 3. **Java Environment** 
    - Ensure Java 17 or above is installed and the path variables are set correctly.
-     - Run the JAR file using the following command:
+   - Run the JAR file using the following command:
 
    ```bash
    java -jar bank-3.3.2.jar
