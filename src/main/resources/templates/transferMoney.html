@@ -90,11 +90,6 @@
         return;
       }
 
-      if (parseFloat(amountToTransfer) <= 0) {
-        alert("Amount must be greater than 0");
-        return;
-      }
-
       let payload = {
         amount: amountToTransfer,
         recipientID: recipientID,
